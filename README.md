@@ -13,11 +13,13 @@ Go to: https://accessible-tic-tac-toe-zy.netlify.app/
 ### How to run locally
 1. Clone this repo locally
 2. cd into frontend and run npm i
-3. Then run npm run dev to start the frontend
-4. To run backend locally, you have to start your own local postgres db
-5. The schema for the db is given in this repo (accessible_tic_tac_toe.sql)
-6. Go into server -> model -> db.js and add your local db connection url into const db = pgp(neon_db_key);
-7. cd into server, run npm i, then npm start
+3. Enter main.jsx and change to axios.defaults.baseURL = 'http://localhost:5000';
+4. Then run npm run dev to start the frontend
+5. To run backend locally, you have to start your own local postgres db
+6. The schema for the db is given in this repo (accessible_tic_tac_toe.sql)
+7. Go into server -> model -> db.js and add your local db connection url into const db = pgp(neon_db_key);
+8. Enter app.js and change to origin: "http://localhost:5173"
+9. cd into server, run npm i, then npm start
 
 ### Design Decisions
 1. #### Colour and Contrast
