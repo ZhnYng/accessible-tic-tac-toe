@@ -17,3 +17,14 @@ Go to: https://accessible-tic-tac-toe-zy.netlify.app/
 7. cd into server, run npm i, then npm start
 
 ### Design Decisions
+1. #### Colour and Contrast
+   - To aid the visually impaired (e.g. colour-blindness)
+   - Having enough contrast allows these users to be able to discern different sections of the website/webapp
+   - We can check if the contrast ratio is enough with https://webaim.org/resources/contrastchecker/
+   - ![image](https://github.com/ZhnYng/accessible-tic-tac-toe/assets/72967431/fd18d833-3f4c-45b8-aaa6-ad9e4939c65f)
+2. #### Keyboard Accessibility
+   - To aid the motor impaired users, I have chosen to use buttons for most parts of the game because buttons allow users to "focus" on them with a tab.
+   - This is useful for the motor impaired because they only need to use buttons to navigate the whole webpage
+   - And when they press enter, they can place either an X or O easily
+3. #### More Screen Reader Support
+   - 
