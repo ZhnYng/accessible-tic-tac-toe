@@ -6,7 +6,10 @@
 3. Requires low latency between 2 players in the same room
 
 ### To visit this web app
+**The backend web service may take more than a minute to spin up**
+
 Go to: https://accessible-tic-tac-toe-zy.netlify.app/
+
 ### How to run locally
 1. Clone this repo locally
 2. cd into frontend and run npm i
