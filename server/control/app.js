@@ -10,12 +10,12 @@ const http = require('http').Server(app);
 
 app.use(express.json()); // Middleware to parse incoming requests with JSON payloads
 app.use(cors({
-    origin: "http://localhost:5173"
+    origin: "https://accessible-tic-tac-toe-zy.netlify.app/"
 }))
 
 const socketIO = require('socket.io')(http, {
     cors: {
-        origin: "http://localhost:5173"
+        origin: "https://accessible-tic-tac-toe-zy.netlify.app/"
     }
 });
 
