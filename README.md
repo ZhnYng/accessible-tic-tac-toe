@@ -27,4 +27,13 @@ Go to: https://accessible-tic-tac-toe-zy.netlify.app/
    - This is useful for the motor impaired because they only need to use buttons to navigate the whole webpage
    - And when they press enter, they can place either an X or O easily
 3. #### More Screen Reader Support
+   - As mentioned earlier, the buttons allow users to "focus" on them.
+   - What I have done is to have a message for each of the boxes when they are in focus.
+   - For example it could say "Add X to the top right" when focused on the top right box on the board
+   - This allows the screen reader to read that text and the user can hear it
+   - Besides this, users need to understand what is happening on the board
+   - Thus I added an announce feature. At the click of this button, it will send a message to be displayed at the bottom left of the webpage, talking about the positions of each X and O.
+   - This is done with the help of live regions, where parts of a page are continuously announced by the screen reader.
+   - To do this, we need to we need to assign a role="region" attribute to a <div> tag, as well as an aria-live attribute
+   - I chose aria-live to be assertive because we want the screen reader to interrupt any ongoing screen reading to announce the status of the board
    - 
