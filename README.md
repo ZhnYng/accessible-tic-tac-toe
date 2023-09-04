@@ -36,4 +36,16 @@ Go to: https://accessible-tic-tac-toe-zy.netlify.app/
    - This is done with the help of live regions, where parts of a page are continuously announced by the screen reader.
    - To do this, we need to we need to assign a role="region" attribute to a <div> tag, as well as an aria-live attribute
    - I chose aria-live to be assertive because we want the screen reader to interrupt any ongoing screen reading to announce the status of the board
-   - 
+  
+### APIs
+1. POST '/addUser' to add a new user at the sign in page
+2. POST '/verifyUser' to verify the details of a user in the login page
+3. GET '/getUser' to get the username by userId
+4. POST '/addMove' to add a move made by a player
+5. GET '/getLastMove/:sessionId' to get the last move made in the session/game
+6. GET '/getAllMoves/:sessionId' to get all the moves in a session
+7. GET '/getAllMovesByUser/:sessionId/:playerId' to get all the moves made by a user in a session
+8. POST '/addSession' to add a session to the DB whenever a game is created
+9. GET '/getSessions/:userId' to get all the sessions the user has played in
+10. POST '/addResults' to add the results of each session whenever there is a winner
+11. GET '/getResults/:sessionId' to get the result of the session
