@@ -1,5 +1,4 @@
 # Accessible-tic-tac-toe
-Video demo: https://youtu.be/cdkKHxLGphs
 
 My Personal Website with past projects: https://my-personal-website-one-theta.vercel.app/
 
