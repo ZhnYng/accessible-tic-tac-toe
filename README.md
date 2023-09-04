@@ -57,3 +57,5 @@ Go to: https://accessible-tic-tac-toe-zy.netlify.app/
 9. GET '/getSessions/:userId' to get all the sessions the user has played in
 10. POST '/addResults' to add the results of each session whenever there is a winner
 11. GET '/getResults/:sessionId' to get the result of the session
+
+There are many more features that I would have hoped to implement if given more time, such as a more screen reader and a visually friendly dashboard, but due to the time constraint, there are some parts of the web app that are not the best.
