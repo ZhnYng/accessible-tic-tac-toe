@@ -91,7 +91,7 @@ const SignUp = () => {
             >
               Sign up
             </button>
-            <a onClick={() => navigate('/login')} className='flex justify-end text-accessible-background underline'>Or login here</a>
+            <a onClick={() => navigate('/login')} className='flex justify-end text-accessible-background underline hover:cursor-pointer'>Or login here</a>
           </div>
         </form>
       </div>

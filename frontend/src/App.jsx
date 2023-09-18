@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Room from "./pages/Room";
 import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
   {
@@ -23,12 +24,16 @@ const router = createBrowserRouter([
     element: <Room/>
   },
   {
-    path: "/",
+    path: "/game",
     element: <Game/>,
   },
   {
     path: '/dashboard',
     element: <Dashboard/>
+  },
+  {
+    path: '/',
+    element: <Home/>
   }
 ]);
 

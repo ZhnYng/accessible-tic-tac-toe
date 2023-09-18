@@ -28,7 +28,7 @@ export default function Room(){
               localStorage.setItem('roomCode', roomCode)
               localStorage.setItem('user1Id', e.users[0])
               localStorage.setItem('user2Id', e.users[1])
-              navigate('/')
+              navigate('/game')
             }
           })
         }

@@ -10,12 +10,14 @@ const http = require('http').Server(app);
 
 app.use(express.json()); // Middleware to parse incoming requests with JSON payloads
 app.use(cors({
-    origin: "https://accessible-tic-tac-toe-zy.netlify.app"
+    // origin: "https://accessible-tic-tac-toe-zy.netlify.app"
+    origin: "http://localhost:5173"
 }))
 
 const socketIO = require('socket.io')(http, {
     cors: {
-        origin: "https://accessible-tic-tac-toe-zy.netlify.app"
+        // origin: "https://accessible-tic-tac-toe-zy.netlify.app"
+        origin: "http://localhost:5173"
     }
 });
 
@@ -46,13 +48,14 @@ socketIO.on('connection', (socket) => {
     })
 
     socket.on('exit', e => {
-        if(e.exit){
-            socketIO.to(e.roomCode).emit('exit', {exit: true})
-        }
+        socketIO.to(e.roomCode).emit('exit')
+        socket.on('leaveRoom', e => {
+            socketIO.in(e.roomCode).socketsLeave(e.roomCode)
+        })
     })
 
     socket.on('disconnect', () => {
-      console.log('🔥: A user disconnected');
+        console.log('🔥: A user disconnected');
     });
 });
 

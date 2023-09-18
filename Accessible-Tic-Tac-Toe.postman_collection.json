@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "00bae3ee-a15d-4a59-9a94-5921b28a8407",
+		"name": "Accessible-Tic-Tac-Toe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24166837"
+	},
+	"item": [
+		{
+			"name": "Add new user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Zhen Yang2\",\r\n    \"email\": \"test2123@gmail.com\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/addUser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"addUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Zhen Yang\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/verifyUser",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"verifyUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add move",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": 1,\r\n    \"player_id\": 1,\r\n    \"move_number\": 1,\r\n    \"move_position\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/addMove",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"addMove"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add session",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user1_id\": \"1\",\r\n    \"user2_id\": \"2\",\r\n    \"session\": \"12345\",\r\n    \"start_time\": \"2023-09-03T10:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/addSession",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"addSession"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get sessions by userId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/getSessions/4",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getSessions",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get last move made in session",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/getLastMove/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getLastMove",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all moves in a session",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/getAllMoves/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getAllMoves",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all moves in a session by a user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/getAllMovesByUser/1/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getAllMovesByUser",
+						"1",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add results",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"session_id\": \"1\",\r\n    \"winner_id\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/addResults",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"addResults"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get results by session",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/getResults/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getResults",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/getUser/4",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getUser",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

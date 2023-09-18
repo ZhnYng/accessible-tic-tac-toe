@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Board } from '../components/Board'
 import { Scoreboard } from '../components/Scoreboard';
-import { ResetButton } from '../components/ResetButton';
+import { NormalButton } from '../components/NormalButton';
 import { AnnounceButton } from '../components/AnnounceButton';
 import { Announcement } from '../components/Announcement';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +33,7 @@ function Game() {
   const navigate = useNavigate()
 
   React.useEffect(() => {
-    localStorage.getItem('userId') ? null : navigate('/login')
+    localStorage.getItem('userId') ? null : navigate('/')
 
     axios
       .post("/addSession", {
@@ -55,7 +55,7 @@ function Game() {
     } else {
       setMessage(`${!xTurn ? 'X' : 'O'} won! The score is X - ${score.xScore} and O - ${score.oScore}`);
     }
-  }, [score]);
+  }, [score.xScore, score.oScore]);
 
   React.useEffect(() => {
     socket.emit('status', {
@@ -72,7 +72,7 @@ function Game() {
       setScore(e.score)
       setGameOver(e.gameOver)
     })
-  }, [xTurn])
+  }, [xTurn, gameOver])
 
   const handleBoxClick = (boxIdx) => {
     const updatedBoard = board.map((value, idx) => {
@@ -131,12 +131,10 @@ function Game() {
   }
 
   const exitGame = () => {
-    socket.emit('exit', {exit: true, roomCode: localStorage.getItem('roomCode')})
+    socket.emit('exit', {roomCode: localStorage.getItem('roomCode')})
     socket.on('exit', e => {
-      if(e.exit){
-        socket.disconnect()
-        navigate('/room')
-      }
+      socket.emit('leaveRoom', {roomCode: localStorage.getItem('roomCode')})
+      navigate('/room')
     })
   }
 
@@ -151,7 +149,6 @@ function Game() {
       <Scoreboard score={score} xTurn={xTurn}/>
       <Board board={board} onClick={gameOver ? resetBoard : handleBoxClick} gameOver={gameOver} xTurn={xTurn}/>
       <div className='flex gap-5'>
-        <ResetButton resetBoard={resetBoard}/>
         <AnnounceButton board={board} score={score} setMessage={setMessage}/>
         <button 
           className='
