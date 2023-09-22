@@ -4,6 +4,7 @@ const usersDB = require('../model/usersDB');
 const movesDB = require('../model/movesDB');
 const sessionsDB = require('../model/sessionsDB');
 const sessionResultsDB = require('../model/sessionResultsDB');
+const resultsDB = require('../model/resultsDB');
 
 const app = express();
 const http = require('http').Server(app);
@@ -58,6 +59,26 @@ socketIO.on('connection', (socket) => {
         console.log('🔥: A user disconnected');
     });
 });
+
+app.post('/updateResult', (req, res) => {
+    resultsDB.updateResult(req.body, (err, result) => {
+        if(err){
+            res.status(500).send(err)
+        }else{
+            res.status(201).send(result)
+        }
+    })
+})
+
+app.get('/getResult/:player', (req, res) => {
+    resultsDB.getResult(req.params.player, (err, result) => {
+        if(err){
+            res.status(500).send(err)
+        }else{
+            res.status(200).send(result)
+        }
+    })
+})
 
 app.get('/', (req, res) => {
     res.send('Accessible Tic Tac Toe Server')
@@ -179,14 +200,14 @@ app.post('/addResults', (req, res) => {
     })
 })
 
-app.get('/getResults/:sessionId', (req, res) => {
-    sessionResultsDB.getResults(req.params.sessionId, (err, result) => {
-        if(err){
-            res.status(500).send(err)
-        }else{
-            res.status(200).send(result)
-        }
-    })
-})
+// app.get('/getResults/:sessionId', (req, res) => {
+//     sessionResultsDB.getResults(req.params.sessionId, (err, result) => {
+//         if(err){
+//             res.status(500).send(err)
+//         }else{
+//             res.status(200).send(result)
+//         }
+//     })
+// })
 
 module.exports = http

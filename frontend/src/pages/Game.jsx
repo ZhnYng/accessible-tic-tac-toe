@@ -33,20 +33,34 @@ function Game() {
   const navigate = useNavigate()
 
   React.useEffect(() => {
-    localStorage.getItem('userId') ? null : navigate('/')
+    localStorage.getItem('roomCode') ? null : navigate('/')
 
-    axios
-      .post("/addSession", {
-        user1_id: localStorage.getItem('user1Id'),
-        user2_id: localStorage.getItem('user2Id'),
-        session: localStorage.getItem('roomCode'),
-        start_time: new Date()
-      })
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => alert(err));
+    // axios
+    //   .post("/addSession", {
+    //     user1_id: localStorage.getItem('user1Id'),
+    //     user2_id: localStorage.getItem('user2Id'),
+    //     session: localStorage.getItem('roomCode'),
+    //     start_time: new Date()
+    //   })
+    //   .then((res) => {
+    //     console.log(res)
+    //   })
+    //   .catch((err) => alert(err));
   }, [])
+
+  React.useEffect(() => {
+    axios.post('/updateResult', {
+      roomCode: localStorage.getItem('roomCode'),
+      playerOne: localStorage.getItem('user1Id'),
+      playerOneScore: score.xScore,
+      playerTwo: localStorage.getItem('user2Id'),
+      playerTwoScore: score.oScore
+    })
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => console.log(err))
+  }, [score.xScore, score.oScore])
   
   const isFirstRender = useRef(true);
   React.useEffect(() => {
@@ -115,19 +129,19 @@ function Game() {
   }
 
   const updateResults = () => {
-    axios.get(`/getSessions/${localStorage.getItem('userId')}`)
-      .then(res => {
-        console.log(res.data.slice(-1)[0].session_id, xTurn ? localStorage.getItem('user1Id') : localStorage.getItem('user2Id'))
-        axios
-          .post("/addResults", {
-            session_id: res.data.slice(-1)[0].session_id,
-            winner_id: xTurn ? localStorage.getItem('user1Id') : localStorage.getItem('user2Id')
-          })
-          .then((res) => {
-            console.log(res)
-          })
-          .catch((err) => alert(err));
-      })
+    // axios.get(`/getSessions/${localStorage.getItem('userId')}`)
+    //   .then(res => {
+    //     console.log(res.data.slice(-1)[0].session_id, xTurn ? localStorage.getItem('user1Id') : localStorage.getItem('user2Id'))
+    //     axios
+    //       .post("/addResults", {
+    //         session_id: res.data.slice(-1)[0].session_id,
+    //         winner_id: xTurn ? localStorage.getItem('user1Id') : localStorage.getItem('user2Id')
+    //       })
+    //       .then((res) => {
+    //         console.log(res)
+    //       })
+    //       .catch((err) => alert(err));
+    //   })
   }
 
   const exitGame = () => {

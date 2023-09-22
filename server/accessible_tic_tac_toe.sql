@@ -38,3 +38,14 @@ CREATE TABLE session_results (
     FOREIGN KEY (session_id) REFERENCES sessions(session_id),
     FOREIGN KEY (winner_id) REFERENCES users(id)
 );
+
+CREATE TABLE results (
+    results_id SERIAL PRIMARY KEY,
+    room_code VARCHAR(50),
+    player_one INT NOT NULL,
+    player_one_score INT NOT NULL,
+    player_two INT NOT NULL,
+    player_two_score INT NOT NULL,
+    FOREIGN KEY (player_one) REFERENCES users(id),
+    FOREIGN KEY (player_two) REFERENCES users(id)
+);
