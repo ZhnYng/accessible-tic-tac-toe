@@ -34,18 +34,6 @@ function Game() {
 
   React.useEffect(() => {
     localStorage.getItem('roomCode') ? null : navigate('/')
-
-    // axios
-    //   .post("/addSession", {
-    //     user1_id: localStorage.getItem('user1Id'),
-    //     user2_id: localStorage.getItem('user2Id'),
-    //     session: localStorage.getItem('roomCode'),
-    //     start_time: new Date()
-    //   })
-    //   .then((res) => {
-    //     console.log(res)
-    //   })
-    //   .catch((err) => alert(err));
   }, [])
 
   React.useEffect(() => {

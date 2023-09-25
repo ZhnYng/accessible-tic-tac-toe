@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("/verifyUser", {
+      .post("/user/verifyUser", {
         username: username,
         password: password,
       })

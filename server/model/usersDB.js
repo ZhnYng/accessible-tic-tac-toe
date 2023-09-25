@@ -24,6 +24,12 @@ const usersDB = {
         db.one('SELECT username FROM users WHERE id = $1;', [userId])
             .then(result => callback(null, result))
             .catch(err => callback(err, null));
+    },
+
+    deleteUser: function(username, callback){
+        db.none('DELETE FROM users WHERE username = $1;', [username])
+            .then(() => callback(null, 'User deleted'))
+            .catch(err => callback(err, null))
     }
 }
 

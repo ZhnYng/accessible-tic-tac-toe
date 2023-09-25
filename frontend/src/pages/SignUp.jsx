@@ -12,7 +12,7 @@ const SignUp = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('/addUser', {
+    axios.post('/user/addUser', {
       username: username,
       email: email,
       password: password

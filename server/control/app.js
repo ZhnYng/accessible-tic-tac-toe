@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const usersDB = require('../model/usersDB');
 const movesDB = require('../model/movesDB');
 const sessionsDB = require('../model/sessionsDB');
 const sessionResultsDB = require('../model/sessionResultsDB');
 const resultsDB = require('../model/resultsDB');
+const userController = require('./userController');
 
 const app = express();
 const http = require('http').Server(app);
@@ -85,43 +85,7 @@ app.get('/', (req, res) => {
 })
 
 // userDB
-app.post('/addUser', (req, res) => {
-    usersDB.addUser(req.body, (err, result) => {
-        if(err){
-            if(err.code === "23505"){
-                res.status(409).send("User already exists")
-            }else{
-                res.status(500).send(err)
-            }
-        }else{
-            res.status(201).send(result)
-        }
-    })
-})
-
-app.post('/verifyUser', (req, res) => {
-    usersDB.verifyUser(req.body, (err, result) => {
-        if(err){
-            if(err.code === 0){
-                res.status(500).send('User does not exist')
-            } else {
-                res.status(500).send(err)
-            }
-        }else{
-            res.status(201).send(result)
-        }
-    })
-})
-
-app.get('/getUser/:userId', (req, res) => {
-    usersDB.getUser(req.params.userId, (err, result) => {
-        if(err){
-            res.status(500).send(err)
-        } else {
-            res.status(200).send(result)
-        }
-    })
-})
+app.use('/user', userController)
 
 // movesDB
 app.post('/addMove', (req, res) => {
