@@ -23,7 +23,7 @@ export default function Dashboard(){
 
   return (
     <div className='flex flex-col justify-center items-center 
-      py-16 bg-accessible-foreground'>
+      py-16 bg-accessible-foreground min-h-screen'>
       <h1 className='text-5xl font-extrabold text-accessible-background'>DASHBOARD</h1>
       <NormalButton 
         text='Back to Game'
