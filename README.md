@@ -7,7 +7,7 @@ My Personal Website with past projects: https://my-personal-website-one-theta.ve
 2. The game follows the traditional rules i.e. 2 players per game
 3. Requires low latency between 2 players in the same room
 
-### To visit this web app (may not work)
+### To visit this web app 
 **The backend web service may take more than a minute to spin up**
 
 Go to: https://accessible-tic-tac-toe-zy.netlify.app/
